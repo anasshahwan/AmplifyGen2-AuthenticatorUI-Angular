@@ -26,6 +26,15 @@ export const auth = defineAuth({
           preferredUsername: 'name',
         },
       },
+      loginWithAmazon: {
+        clientId: secret('AMAZON_CLIENT_ID'),
+        clientSecret: secret('AMAZON_CLIENT_SECRET'),
+        scopes: ['profile'],
+        attributeMapping: {
+          email: 'email',
+          preferredUsername: 'name',
+        },
+      },
       callbackUrls: ['http://localhost:4200', 'https://yourwebsite.com'],
       logoutUrls: ['http://localhost:4200', 'https://yourwebsite.com'],
     },

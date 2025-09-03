@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
-import { fetchUserAttributes } from 'aws-amplify/auth';
+import { fetchAuthSession, fetchUserAttributes } from 'aws-amplify/auth';
 
 @Component({
   selector: 'app-root',
@@ -17,5 +17,13 @@ export class AppComponent {
     const userAttr = await fetchUserAttributes();
     this.userName = userAttr.preferred_username;
     console.log(userAttr);
+  }
+
+  async whoIsSignedIn() {
+    // const currentUser = await getCurrentUser();
+    // console.log(currentUser);
+
+    const userSession = await fetchAuthSession();
+    console.log(userSession);
   }
 }

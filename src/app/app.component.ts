@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 import { fetchAuthSession, fetchUserAttributes } from 'aws-amplify/auth';
+import {
+  CookieStorage,
+  defaultStorage,
+  sessionStorage,
+} from 'aws-amplify/utils';
+import { cognitoUserPoolsTokenProvider } from 'aws-amplify/auth/cognito';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +20,14 @@ export class AppComponent {
   userName: string | undefined = '';
 
   async ngOnInit() {
+    //cognitoUserPoolsTokenProvider.setKeyValueStorage(new CookieStorage());
+
     const userAttr = await fetchUserAttributes();
     this.userName = userAttr.preferred_username;
     console.log(userAttr);
+
+    // console.log(defaultStorage);
+    // cognitoUserPoolsTokenProvider.setKeyValueStorage(defaultStorage);
   }
 
   async whoIsSignedIn() {

@@ -9,6 +9,18 @@ export const auth = defineAuth({
     email: true,
   },
   userAttributes: {
+    'custom:job_title': {
+      dataType: 'String',
+      minLen: 2,
+      maxLen: 50,
+      mutable: true,
+    },
+    'custom:companyName': {
+      dataType: 'String',
+      minLen: 2,
+      maxLen: 50,
+      mutable: true,
+    },
     preferredUsername: {
       mutable: true,
       required: true,

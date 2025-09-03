@@ -9,7 +9,10 @@ export const auth = defineAuth({
     email: true,
   },
   groups: ['Testers', 'Admins', 'Editors', 'Customers'],
-
+  multifactor: {
+    mode: 'REQUIRED',
+    totp: true,
+  },
   userAttributes: {
     'custom:job_title': {
       dataType: 'String',

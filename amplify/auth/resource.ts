@@ -8,6 +8,8 @@ export const auth = defineAuth({
   loginWith: {
     email: true,
   },
+  groups: ['Testers', 'Admins', 'Editors', 'Customers'],
+
   userAttributes: {
     'custom:job_title': {
       dataType: 'String',
